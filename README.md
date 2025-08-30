@@ -14,8 +14,13 @@ I can only use the tools listed here in my assignments.
 ---
 
 ## HW2 & HW3: Lecture 3 - More Simple Python
-- (to be unlocked…)
-
+- Functions
+- The following libraries
+  - `os`
+  - `random`
+  - `math`
+  - `datetime`
+- Triple quotes to allow multiline strings
 ---
 
 ## Level 3: Conditionals
