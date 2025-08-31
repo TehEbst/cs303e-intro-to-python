@@ -41,15 +41,15 @@ with, yield
   - `b'Some ASCII'`
 
 # Arithmetic Operations
-| Operator | Meaning        | Example  | Result     |
-| -------- | -------------- | -------- | ---------- |
-| `+`      | Addition       | `7 + 3`  | `10`       |
-| `-`      | Subtraction    | `7 - 3`  | `4`        |
-| `*`      | Multiplication | `7 * 3`  | `21`       |
-| `/`      | Division       | `7 / 3`  | `2.333...` |
-| `//`     | Floor Division | `7 // 3` | `2`        |
-| `%`      | Modulus        | `7 % 3`  | `1`        |
-| `**`     | Exponentiation | `2 ** 4` | `16`       |
+| Operator | Meaning                | Example  | Result     |
+| -------- |------------------------| -------- | ---------- |
+| `+`      | Addition               | `7 + 3`  | `10`       |
+| `-`      | Subtraction            | `7 - 3`  | `4`        |
+| `*`      | Multiplication         | `7 * 3`  | `21`       |
+| `/`      | Division               | `7 / 3`  | `2.333...` |
+| `//`     | Integer/Floor Division | `7 // 3` | `2`        |
+| `%`      | Modulus                | `7 % 3`  | `1`        |
+| `**`     | Exponentiation         | `2 ** 4` | `16`       |
 
 
 # Augmented Assignment Operators in Python 🎯
@@ -60,15 +60,15 @@ Augmented assignments update a variable "in place" by applying an operation and 
 
 ## Table of Operators
 
-| Operator | Meaning                       | Example Before | Statement     | Example After |
-|----------|-------------------------------|----------------|---------------|---------------|
-| `+=`     | Add and assign                | `x = 5`        | `x += 3`      | `x == 8`      |
-| `-=`     | Subtract and assign           | `x = 5`        | `x -= 2`      | `x == 3`      |
-| `*=`     | Multiply and assign           | `x = 4`        | `x *= 3`      | `x == 12`     |
-| `/=`     | Divide and assign (float)     | `x = 9`        | `x /= 2`      | `x == 4.5`    |
-| `//=`    | Floor divide and assign       | `x = 9`        | `x //= 2`     | `x == 4`      |
-| `%=`     | Modulus and assign            | `x = 9`        | `x %= 2`      | `x == 1`      |
-| `**=`    | Exponentiate and assign       | `x = 3`        | `x **= 2`     | `x == 9`      |
+| Operator | Meaning                   | Example Before | Statement     | Example After |
+|----------|---------------------------|----------------|---------------|---------------|
+| `+=`     | Add and assign            | `x = 5`        | `x += 3`      | `x == 8`      |
+| `-=`     | Subtract and assign       | `x = 5`        | `x -= 2`      | `x == 3`      |
+| `*=`     | Multiply and assign       | `x = 4`        | `x *= 3`      | `x == 12`     |
+| `/=`     | Divide and assign (float) | `x = 9`        | `x /= 2`      | `x == 4.5`    |
+| `//=`    | Floor divide and assign   | `x = 9`        | `x //= 2`     | `x == 4`      |
+| `%=`     | Modulus and assign        | `x = 9`        | `x %= 2`      | `x == 1`      |
+| `**=`    | Exponentiate and assign   | `x = 3`        | `x **= 2`     | `x == 9`      |
 
 # Simultaneous and Multiple Assignment in Python 🧩
 
