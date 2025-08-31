@@ -21,6 +21,10 @@ I can only use the tools listed here in my assignments.
   - `math`
   - `datetime`
 - Triple quotes to allow multiline strings
+- Imports
+- Character Operations
+- String Concatenation
+- Print Formatting
 ---
 
 ## Level 3: Conditionals
