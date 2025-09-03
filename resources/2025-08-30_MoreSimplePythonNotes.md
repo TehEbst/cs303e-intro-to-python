@@ -247,7 +247,7 @@ str1 = "abc"
 ```
 
 ## 2. Formatting with `format()`
-`fotmat(value, fortmat_string)` converts a value to a string with specific formatting
+`format(value, format_string)` converts a value to a string with specific formatting
 
 ### a) Formatting Floats
 - Field width: total width of the string
