@@ -4,20 +4,9 @@
 # Course Name: CS303E
 #
 # Date: 09-02-2025
-# Description of Program:
-
-# Inputs
-# Fahrenheit Temperature
-# Wind speed in mph
-
-# Compute two wind speed reports
-# Fahrenheit
-#   T_wc = 35.74 + 0.6215*T - 35.75*V**0.16 + 0.4275*T*V**0.16
-#   -58 <= T <= 41
-#   2 <= V
-# Celsius
-#   C = (F - 32) * 5/9
-#   kilometers = miles * 1.60934
+# Description of Program: Takes two user inputs for temperature and wind speed
+#   and outputs a report of temperature, wind chill, and wind speed for both
+#   Celsius and Fahrenheit.
 
 # User input Fahrenheit temperature and miles per hour wind speed
 #   stored as a float
