@@ -10,9 +10,9 @@
 
 # User input Fahrenheit temperature and miles per hour wind speed
 #   stored as a float
-f_temp = 41 # float(input('Enter Fahrenheit temperature: '))
+f_temp = float(input('Enter Fahrenheit temperature: '))
 if -58 <= f_temp <= 41:
-    mph_ws = 1 # float(input('Enter wind speed in miles per hour: '))
+    mph_ws = float(input('Enter wind speed in miles per hour: '))
     if 2 <= mph_ws:
         # Calculate wind chill temperature using given formula
         f_wc_temp = (35.74 +
