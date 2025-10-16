@@ -50,6 +50,7 @@ class ToyCar:
         return True
 
     def setDir(self, n):
+        """Function to set the direction, as long as it is valid"""
         # Validate inputted parameter is legal
         if self.validDir(n):
             # Update the current direction
@@ -57,9 +58,11 @@ class ToyCar:
             print(f"DEBUG: setting direction {self.dirToCard()}")
 
     def getDir(self):
+        """Function to get current direction as an int"""
         return self.d
 
     def dirToCard(self):
+        """Function to convert an int direction into a string version"""
         if self.d == EAST:
             return "East"
         elif self.d == NORTH:
@@ -70,9 +73,11 @@ class ToyCar:
             return "South"
 
     def getX(self):
+        """A function to return the x-coordinate as an int"""
         return self.x
 
     def getY(self):
+        """A function to return the y-coordinate as an int"""
         return self.y
 
     def turnLeft(self):
@@ -147,6 +152,7 @@ def goto( car, x, y):
         car.forward(abs(ny))
 
 def main():
+    """Test cases"""
     c1 = ToyCar(100, -100, SOUTH)  # Create car c1
     print(c1)  # and show its state
 
