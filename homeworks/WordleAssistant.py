@@ -1,13 +1,14 @@
 # Assignment: HW11
 # File: WordleAssistant.py
-# Student:
-# UT EID:
+# Student: Alex Medina
+# UT EID: bam5767
 # Course Name: CS303E
 #
-# Date:
-# Description of Program:
-from fileinput import close
-
+# Date: 2025-11-13
+# Description of Program: The purpose of this file is to create functions to
+#   help with playing the game Wordle. It defines four different tools that
+#   might be helpful to a wordle player as well as a function to create a
+#   wordlist from a readable file.
 
 def createWordlist(filename):
     """ Read words from the provided file and store them in a list.
