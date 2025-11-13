@@ -9,10 +9,8 @@
 # Description of Program:
 
 import math
-import time
-
-_PRIMES = []
-_MAX_COMPUTED = 0
+import sys
+sys.setrecursionlimit(1000000)
 
 # Function 0 - Exit
 def exitFunc():
@@ -24,17 +22,15 @@ def isPrime():
     print('You\'ve asked if N is a prime.')
     while True:
         userInput = input('What is N? ')
-        if not userInput.isdigit():
-            print('Illegal value. Try again!')
-            continue
-        N = int(userInput)
-        if 0 == N:
-            print('Illegal value. Try again!')
+
+        inputValidation = validateN(userInput, 0)
+
+        if not inputValidation[0]:
             continue
 
-        findPrimes(N)
+        N = inputValidation[1]
 
-        if _PRIMES[N]:
+        if isNumPrime(N):
             print(f'{N} is prime\n')
         else:
             print(f'{N} is not prime\n')
@@ -42,29 +38,97 @@ def isPrime():
 
 # Function 2 - List N prime numbers
 def listNPrime():
-    pass
+    print('You\'ve asked to display the first N prime numbers.')
+    while True:
+        # Take user input and validate it
+        userInput = input('What is N? ')
+        inputValidation = validateN(userInput, -1)
+        if not inputValidation[0]:
+            continue
+        N = inputValidation[1]
+
+        # Variable to store the prime numbers
+        primes = []
+        # Counter variable to go through numbers
+        i = 0
+
+        while len(primes) != N:
+            is_i_prime = isNumPrime(i)
+            if is_i_prime:
+                primes.append(i)
+            i += 1
+
+        print(f'The first {N} primes are:', primes, end='\n\n')
+
+        return
 
 # Function 3 - Display the Nth prime number
 def dispNthPrime():
-    print('You\'ve asked if N is a prime.')
+    print('You\'ve asked for the Nth prime number.')
     while True:
         userInput = input('What is N? ')
-        if not userInput.isdigit():
-            print('Illegal value. Try again!')
+        inputValidation = validateN(userInput, 0)
+        if not inputValidation[0]:
             continue
-        userInput = int(userInput)
-        print('were here')
-        if 0 == userInput:
-            print('Illegal value. Try again!')
-            continue
+        N = inputValidation[1]
+
+        # Variable to store the prime numbers
+        primes = []
+        # Counter variable to go through numbers
+        i = 0
+
+        while len(primes) <= N:
+            is_i_prime = isNumPrime(i)
+            if is_i_prime:
+                primes.append(i)
+            i += 1
+
+        print(f'The {N}th prime number is:', primes[N-1], end='\n\n')
+
+        return
 
 # Function 4 - Find first prime after N
 def firstPrime():
-    pass
+    print('You\'ve asked for the first prime number after N.')
+    while True:
+        userInput = input('What is N? ')
+        inputValidation = validateN(userInput, -math.inf)
+        if not inputValidation[0]:
+            continue
+        N = inputValidation[1]
+
+        if N < 2:
+            print(f'The first prime after {N} is:', 2, end='\n\n')
+            return
+
+        # Variable to store the prime numbers
+        primes = []
+        # Counter variable to go through numbers
+        i = 0
+
+        while max(primes, default=0) < N:
+            is_i_prime = isNumPrime(i)
+            if is_i_prime:
+                primes.append(i)
+            i += 1
+
+        print(f'The first prime after {N} is:', primes[-1], end='\n\n')
 
 # Function 5 - Factor N
 def factorN():
-    pass
+    print('You\'ve asked for the prime factorization of N.')
+    while True:
+        userInput = input('What is N? ')
+        inputValidation = validateN(userInput, 1)
+        if not inputValidation[0]:
+            continue
+        N = inputValidation[1]
+
+        primeFactors = primeFactorization(N)
+
+        print(f'The prime factorization of {N} is: {primeFactors}', end='\n\n')
+
+        return
 
 # Function 6 - Help message
 def commandPrint():
@@ -78,41 +142,71 @@ def commandPrint():
     print("  6: Display this help message.")
     print()
 
-def findPrimes(N):
-    """Return a list of all prime numbers up to N using the Sieve of Eratosthenes."""
-    global _PRIMES, _MAX_COMPUTED
+# HELPER FUNCTIONS
+def isNumPrime(num, divisor=2):
+    # Make the base cases
+    if num <= 1:
+        return False
+    if num == 2:
+        return True
 
-    if N <= _MAX_COMPUTED:
-        return _PRIMES
+    # Create the stopping criteria. Apparently math says if we haven't found
+    #   a divisor up to sqrt(num), then it's prime
+    if divisor * divisor > num:
+        return True
+    elif num % divisor == 0:
+        return False
+    else:
+        # Make the function recursive
+        return isNumPrime(num, divisor + 1)
 
-    # Handle some edge cases
-    if N < 2:
-        return []
-    if N == 2:
-        return [2]
+def primeFactorization(N):
+    factors = []
+    d = 2
+    while N > 1 and not isNumPrime(N):
+        if N % d == 0:
+            if isNumPrime(d):
+                factors.append(d)
+                N //= d
+                d = 2
+        else:
+            d += 1
 
-    # Create a list of True from 0 through N
-    primes = [True] * (N + 1)
-    # Since first two values do not count as primes, set them to false
-    primes[0] = primes[1] = False
+    # If N is prime, we need to add it
+    if isNumPrime(N):
+        factors.append(N)
+        return factors
 
-    # As per the formula, we go from 2  until sqrt(N)
-    for i in range(2, int(N**0.5) + 1):
-        # As we go through the list, if it is considered prime
-        if primes[i]:
-            # Start j at i*i, end at N, step by i (as per the formula)
-            for j in range(i*i, N + 1, i):
-                # Make sure the multiple is not considered prime
-                primes[j] = False
-
-    _MAX_COMPUTED = N
-    _PRIMES = primes
-    # Return the full list of values that can be used for other functions
-    return _PRIMES
+    return factors
 
 def invalidChoice(command):
     print(f'Command {command} not recognized. Try Again!')
     commandPrint()
+
+def validateN(userInput, cutoffNumber):
+    # Handle empty string
+    if not userInput:
+        return False, None
+
+    inputIsNegative = False
+    # Handle negative numbers
+    if userInput[0] == '-':
+        inputIsNegative = True
+
+    if inputIsNegative:
+        if not userInput[1:].isdigit():
+            print('Illegal value. Try again!')
+            return False, None
+    else:
+        if not userInput.isdigit():
+            print('Illegal value. Try again!')
+            return False, None
+
+    N = int(userInput)
+    if not N > cutoffNumber:
+        print('Illegal value. Try again!')
+        return False, None
+    return True, N
 
 COMMANDS = {
     '0': exitFunc,
@@ -159,7 +253,7 @@ def main():
 
 main()
 
-# # Replaced by more efficient function!
+# # Replaced by recursive function to work better with program
 # def findPrimes(N):
 #     '''This function uses the Sieve of Eratosthenes to find all prime
 #     numbers to any given limit N'''
