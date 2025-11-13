@@ -106,5 +106,5 @@ def main():
 
     print(getPossibleWords( s[0], {'a':0, 'b':1}, "o", "v" ))
 
-main()
+# main()
 
